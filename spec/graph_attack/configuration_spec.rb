@@ -10,6 +10,7 @@ RSpec.describe GraphAttack::Configuration do
       expect(configuration.interval).to be_nil
       expect(configuration.on).to eq(:ip)
       expect(configuration.redis_client).to be_a(Redis)
+      expect(configuration.enabled).to be_boolean
     end
   end
 
@@ -26,12 +27,14 @@ RSpec.describe GraphAttack::Configuration do
         c.interval = 30
         c.on = :client_token
         c.redis_client = redis
+        c.enabled = false
       end
 
       expect(configuration.threshold).to eq(99)
       expect(configuration.interval).to eq(30)
       expect(configuration.on).to eq(:client_token)
       expect(configuration.redis_client).to eq(redis)
+      expect(configuration.enabled).to eq(false)
     end
   end
 end

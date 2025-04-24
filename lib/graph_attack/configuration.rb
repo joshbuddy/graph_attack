@@ -15,11 +15,15 @@ module GraphAttack
     # Use a custom Redis client.
     attr_accessor :redis_client
 
+    # Specify if this is enabled
+    attr_accessor :enabled
+
     def initialize
       @threshold = nil
       @interval = nil
       @on = :ip
       @redis_client = Redis.new
+      @enabled = true
     end
   end
 

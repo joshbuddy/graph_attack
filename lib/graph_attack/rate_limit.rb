@@ -3,6 +3,8 @@
 module GraphAttack
   class RateLimit < GraphQL::Schema::FieldExtension
     def resolve(object:, arguments:, **_rest)
+      return yield(object, arguments) unless GraphAttack.configuration.enabled
+
       rate_limited_field = object.context[on]
 
       unless object.context.key?(on)
