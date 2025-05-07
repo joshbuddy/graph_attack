@@ -12,7 +12,7 @@ module GraphAttack
       end
 
       if rate_limited_field && calls_exceeded_on_query?(rate_limited_field)
-        return RateLimited.new('Query rate limit exceeded')
+        return RateLimited.new(GraphAttack.configuration.error_message)
       end
 
       yield(object, arguments)

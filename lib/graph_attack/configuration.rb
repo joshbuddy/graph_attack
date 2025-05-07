@@ -18,12 +18,17 @@ module GraphAttack
     # Specify if this is enabled
     attr_accessor :enabled
 
+    # Error message
+    attr_accessor :error_message
+
+
     def initialize
       @threshold = nil
       @interval = nil
       @on = :ip
       @redis_client = Redis.new
       @enabled = true
+      @error_message = 'Query rate limit exceeded'
     end
   end
 
